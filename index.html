@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Stochastic Processes</title>
+    
+    <!-- Configures MathJax for direct LaTeX handling inside $ and $$ delimiters -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* Base Styling & Generous Layout Padding */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.75;
+            color: #2c3e50;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 50px 24px;
+            background-color: #fafbfc;
+        }
+
+        /* Typography & Custom Deep Dark Blue Theme */
+        h1 {
+            color: #0a2540;
+            font-size: 2.4em;
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 3px solid #0a2540;
+            letter-spacing: -0.5px;
+        }
+        
+        h2 {
+            color: #0a2540;
+            font-size: 1.6em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+
+        h3 {
+            color: #0a2540;
+            font-size: 1.2em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 22px;
+        }
+
+        ul {
+            padding-left: 24px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Distinct Section Containers for Visual Balance */
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-left: 6px solid #0a2540;
+            padding: 26px;
+            border-radius: 6px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .info-card p {
+            margin: 8px 0;
+        }
+
+        .syllabus-box {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            padding: 28px;
+            border-radius: 6px;
+            margin-bottom: 35px;
+        }
+
+        .syllabus-unit {
+            margin-bottom: 20px;
+        }
+
+        .syllabus-unit:last-child {
+            margin-bottom: 0;
+        }
+
+        .syllabus-unit strong {
+            color: #0a2540;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+
+        /* High-Padding Schedule Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+        }
+
+        th, td {
+            border: 1px solid #e1e4e8;
+            padding: 18px 16px; /* Enhanced internal cell spacing */
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #0a2540;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Highlight style for midterms or special deadlines */
+        tr.highlight-row {
+            background-color: #fff9e6;
+            font-weight: 500;
+        }
+
+        /* Functional Text Elements */
+        a {
+            color: #0056b3;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #0a2540;
+            text-decoration: underline;
+        }
+
+        .date-label {
+            display: inline-block;
+            color: #c0392b;
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        footer {
+            margin-top: 80px;
+            font-size: 0.9em;
+            color: #888;
+            text-align: center;
+            border-top: 1px solid #e1e4e8;
+            padding-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Introduction to Stochastic Processes</h1>
+
+    <!-- Basic Course Information Block -->
+    <div class="info-card">
+        <p><strong>Instructor:</strong> Prof. ?? (Email: <a href="mailto:athreya@isibang.ac.in">athreya@isibang.ac.in</a>)</p>
+        <p><strong>Classes:</strong> Wednesday : 2:00 PM - 6:10 PM at ISI Bangalore Centre</p>
+        <p><strong>Scoring:</strong> Final Exam: 50%, Midterm Exam: 25%, Homework: 25%</p>
+    </div>
+
+    <!-- Syllabus Details -->
+    <h2>Syllabus</h2>
+    <div class="syllabus-box">
+        <div class="syllabus-unit">
+            <strong>DISCRETE-TIME MARKOV CHAINS:</strong>
+            Classification of states, Stationary distribution, reversibility and convergence. Random walks and electrical networks. Collision and recurrence.
+        </div>
+        <div class="syllabus-unit">
+            <strong>DISCRETE-TIME MARTINGALES:</strong>
+            Optional Stopping theorem, Martingale convergence theorem, Doob's inequality and convergence.
+        </div>
+        <div class="syllabus-unit">
+            <strong>BRANCHING PROCESSES:</strong>
+            Model definition. Connection with martingales. Probability of survival. Mean and variance of number of individuals.
+        </div>
+        <div class="syllabus-unit">
+            <strong>BASIC PROBABILISTIC INEQUALITIES AND APPLICATIONS:</strong>
+            First and Second Moment methods. Applications to Longest increasing subsequences, Random $k$-Sat problem and connectivity threshold for Erdős-Rényi graphs. Chernoff bounds and Johnson-Lindenstrauss lemma.
+        </div>
+    </div>
+
+    <!-- Literature References -->
+    <h2>References and Texts</h2>
+    <ul>
+        <li><strong>[D]</strong> <em>Probability: Theory and Examples</em> by Rick Durrett.</li>
+        <li><strong>[LPW]</strong> <em>Markov Chains and Mixing Times</em> by David A. Levin, Yuval Peres, and Elizabeth L. Wilmer.</li>
+        <li><strong>[N]</strong> <em>Markov Chains</em> by James Norris.</li>
+    </ul>
+
+    <!-- Submission Guidelines -->
+    <h2>Homework Policy</h2>
+    <p>There will be regular Homework assignments given during the course. You are encouraged to work together on solving the problems but please write up solutions without consulting anyone else. All Homeworks should be uploaded onto the respective Moodle platform by 6:30 PM on the due date.</p>
+
+    <!-- Schedule Matrix -->
+    <h2>Course Schedule</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 8%;">Week</th>
+                <th style="width: 27%;">Notes / Materials</th>
+                <th style="width: 25%;">Homework</th>
+                <th style="width: 40%;">Topics & LaTeX Demonstrations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><a href="notes/week1.pdf">Week-1 Notes</a></td>
+                <td><a href="hw/hw1.pdf">Homework 1</a><br><span class="date-label">Due: July 30th</span></td>
+                <td>Finite length Random walks. Let $X_n$ define position where the boundary conditions are structural.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a href="notes/week2.pdf">Week-2 Notes</a></td>
+                <td><a href="hw/hw2.pdf">Homework 2</a><br><span class="date-label">Due: August 6th</span></td>
+                <td>Stopping times, Reflection Principle and Last visit to Origin. Display equation presentation:
+                    $$ \mathbb{P}\left(\max_{1 \le k \le n} M_k \ge \lambda\right) \le \frac{\mathbb{E}[|M_n|]}{\lambda} $$
+                </td>
+            </tr>
+            <tr class="highlight-row">
+                <td>-</td>
+                <td><a href="exams/midterm-sol.pdf">Midterm Solution</a></td>
+                <td>--</td>
+                <td>Midterm Evaluation Week — Comprehensive Review.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><a href="notes/week3.pdf">Week-3 Notes</a></td>
+                <td><a href="hw/hw3.pdf">Homework 3</a><br><span class="date-label">Due: August 13th</span></td>
+                <td>Infinite Length Random walk. Markov Chain transitions mapping the global equation: $$\pi P = \pi$$</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        Last Modified: July 2026 | <a href="https://www.isibang.ac.in/~statmath/courses.html">ISI Courses Page</a>
+    </footer>
+
+</body>
+</html>
