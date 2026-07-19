@@ -311,9 +311,22 @@
         </tbody>
     </table>
 
-    <footer>
-        Last Modified: July 2026 | <a href="https://www.isibang.ac.in/~adean/infsys/database/Bmath/PT3.html">ISI Courses Page</a>
+   <footer>
+        Last Modified: <span id="last-modified-date">July 2026</span> | <a href="https://www.isibang.ac.in/~adean/infsys/database/Bmath/PT3.html" target="_blank" rel="noopener noreferrer">ISI Courses Page</a>
     </footer>
+
+    <!-- Script to automatically update the last modified timestamp -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const lastMod = new Date(document.lastModified);
+            
+            // Formats the date to a clean, readable string (e.g., "July 19, 2026")
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = lastMod.toLocaleDateString('en-US', options);
+            
+            document.getElementById("last-modified-date").textContent = formattedDate;
+        });
+    </script>
 
 </body>
 </html>
